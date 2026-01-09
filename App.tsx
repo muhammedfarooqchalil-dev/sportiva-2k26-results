@@ -7,7 +7,26 @@ import { Login } from './components/Login';
 import { Result } from './types';
 import { subscribeToResults, subscribeToAuth, logoutAdmin, listenForLocalUpdates } from './services/dataService';
 import { isFirebaseConfigured } from './firebaseConfig';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, Heart } from 'lucide-react';
+
+const Footer: React.FC = () => (
+  <footer className="bg-slate-900 text-slate-400 py-8 mt-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+      <div className="mb-4 md:mb-0 text-center md:text-left">
+        <h4 className="text-white font-bold text-lg">Sportiva 2K26</h4>
+        <p className="text-sm mt-1">Jamia Islamiya Arts & Science College</p>
+      </div>
+      <div className="flex items-center text-sm">
+        <span>Made with</span>
+        <Heart className="h-4 w-4 text-red-500 mx-1 fill-current" />
+        <span>for the students</span>
+      </div>
+      <div className="mt-4 md:mt-0 text-xs text-slate-500">
+        &copy; 2026 Annual Sports Meet Committee
+      </div>
+    </div>
+  </footer>
+);
 
 const App: React.FC = () => {
   const [view, setView] = useState<'home' | 'admin' | 'login'>('home');
@@ -61,7 +80,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
       <Navbar 
         isAdmin={!!user} 
         onLogout={handleLogout} 
@@ -77,7 +96,7 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex-grow w-full">
         
         {view === 'home' && (
           <div className="space-y-8 animate-fade-in">
@@ -124,6 +143,8 @@ const App: React.FC = () => {
           </div>
         )}
       </main>
+      
+      <Footer />
     </div>
   );
 };

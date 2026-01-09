@@ -10,6 +10,13 @@
       body {
         font-family: 'Inter', sans-serif;
       }
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+      }
     </style>
   <script type="importmap">
 {
@@ -23,7 +30,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-50 text-slate-900">
-    <div id="root"></div>
+  <body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+    <div id="root" class="flex-grow"></div>
   </body>
 </html>
